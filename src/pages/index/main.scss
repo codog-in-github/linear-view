@@ -1,0 +1,130 @@
+@import 'theme.scss';
+.title{
+    font-size: 24px;
+    margin-block: 12px;
+
+    &::before {
+        content: '⭐';
+    }
+}
+@font-face
+{
+    font-family: l-view-font;
+    src: url('~@/assets/fonts/main.ttf') format('truetype');
+}
+
+body{
+    font-family: l-view-font;
+    padding: 10px;
+}
+
+.l-hidden{
+    visibility: hidden;
+}
+
+@mixin control () {
+    height: $size-control-normal;
+    line-height: $size-control-normal;
+    font-size: $size-control-label-normal;
+    padding: $size-control-padding-block-normal $size-control-padding-inline-normal;
+    margin: $size-control-margin-block-normal $size-control-margin-inline-normal;
+    border-radius: $size-control-border-radus;
+}
+
+.l-button {
+    @include control();
+    transition: all 0.1s;
+    border: 1px solid #000;
+    display: inline-block;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    top: 0;
+    left: 0;
+
+    &:hover {
+        top: -3px;
+        left: -3px;
+        box-shadow: 3px 3px 0 0 #000;
+    }
+
+    &:active {
+        top: 0;
+        left: 0;
+        box-shadow: 0 0 0 0 #000;
+    }
+
+    &.l-deep {
+        background-color: #000;
+        color: #fff;
+
+        &:hover{
+            background-color: $color-primary;
+        }
+    }
+}
+
+.l-input{
+    @include control();
+    border: 1px solid #000;
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: text;
+
+
+    input, textarea{
+        font-size: inherit;
+        font-family: inherit;
+        display: block;
+        outline: none;
+        border: none;
+        width: 100%;
+    }
+
+    &:has(input:focus),
+    &:has(textarea:focus){
+        box-shadow: 0 0 3px 1px $color-primary;
+    }
+    &:has(textarea){
+        height: unset;
+        min-height: $size-control-normal;
+    }
+}
+
+.l-select {
+    @include control();
+    cursor: pointer;
+    border: 1px solid #000;
+
+    &__options{
+        background: #fff;
+        position: fixed;
+    }
+}
+
+.l-option{
+    @include control();
+    border: 1px solid #000;
+    cursor: pointer;
+    margin-inline: 0;
+
+    &:hover{
+        color: #fff;
+        background-color: $color-primary;
+    }
+}
+
+.l-mask{
+    cursor: default;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.l-placeholder {
+    color: $color-placeholder;
+}
